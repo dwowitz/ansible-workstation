@@ -1,0 +1,16 @@
+---
+# vars file for workstation
+packages:
+  - docker
+  - python
+  - python-pip
+  - python-virtualenv
+  - vim-enhanced
+  - tmux
+  - mlocate
+  - nmap
+  - telnet
+  - jq
+  - bc
+  - tree
+  - '@development'

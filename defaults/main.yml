@@ -1,0 +1,4 @@
+---
+# defaults file for workstation
+my_user: 'vagrant'
+my_user_home: '/home/{{ my_user }}'

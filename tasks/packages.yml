@@ -1,0 +1,24 @@
+---
+- name: Add repository
+  yum_repository:
+    name: epel
+    description: EPEL Yum repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+
+- name: Install my basic packages
+  yum:
+    name: '{{ packages }}'
+    state: latest
+    disable_gpg_check: true
+
+- name: Install GH Repo
+  yum:
+    name: http://mirror.ghettoforge.org/distributions/gf/gf-release-latest.gf.el7.noarch.rpm
+    state: present
+    disable_gpg_check: true
+
+- name: Upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+    enablerepo: gf,gf-plus
