@@ -1,7 +1,8 @@
-Role Name
+Ansible Role: Workstation
 =========
+[![Build Status](https://travis-ci.org/dwowitz/ansible-workstation.svg?branch=master)](https://travis-ci.org/dwowitz/ansible-workstation)
 
-A brief description of the role goes here.
+Setup my headless workstation on CentOS 7.
 
 Requirements
 ------------
