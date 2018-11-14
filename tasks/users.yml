@@ -8,15 +8,12 @@
     ssh_key_bits: 2048
     ssh_key_file: .ssh/id_rsa
 
-- name: Create file for granting sudo access
-  file:
+- name: Grant user passwordless sudo access
+  lineinfile:
+    create: yes
+    line: '{{ my_user }}        ALL=(ALL)       NOPASSWD: ALL'
     path: '/etc/sudoers.d/00_{{ my_user }}'
     owner: root
     group: root
-    mode: 0400
-    state: touch
+    mode: 0440
 
-- name: Grant user passwordless sudo access
-  copy:
-    content: '{{ my_user }}        ALL=(ALL)       NOPASSWD: ALL'
-    dest: '/etc/sudoers.d/00_{{ my_user }}'
