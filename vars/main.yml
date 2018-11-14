@@ -1,5 +1,8 @@
 ---
 # vars file for workstation
+my_name: Danny Berkowitz
+my_email: dwowitz@gmail.com
+my_gpg_fingerprint: DD3EDDC1D17CA36B
 packages:
   - docker
   - python
