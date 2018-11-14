@@ -14,6 +14,7 @@
     owner: root
     group: root
     mode: 0440
+    state: touch
 
 - name: Grant user passwordless sudo access
   copy:
