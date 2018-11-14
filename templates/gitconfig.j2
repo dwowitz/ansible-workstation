@@ -1,6 +1,10 @@
 [user]
   name = {{ my_name }}
   email = {{ my_email }}
+{% if my_gpg_fingerprint %}
   signingkey = {{ my_gpg_fingerprint }}
+{% endif %}
 [commit]
+{% if my_gpg_fingerprint %}
   gpgsign = true
+{% endif %}
