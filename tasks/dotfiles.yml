@@ -1,1 +1,6 @@
 ---
+- name: Create ~/.gitconfig
+  template:
+    src: gitconfig.j2
+    dest: '{{ my_user_home }}/.gitconfig'
+    owner: '{{ my_user }}'
