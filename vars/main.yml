@@ -5,7 +5,7 @@ my_user_home: '/home/{{ my_user }}'
 my_name: Danny Berkowitz
 my_email: dwowitz@gmail.com
 packages:
-  - yum-utils
+  - kr
   - docker
   - python
   - python-pip
