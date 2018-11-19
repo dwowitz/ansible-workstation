@@ -12,5 +12,5 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export PATH
 
 if ! kr me > /dev/null 2>&1; then
-    kr pair && kr codesign
+    kr pair && echo 'n' | kr codesign
 fi
