@@ -13,3 +13,18 @@
     dest: '{{ my_user_home }}/.vimrc'
     owner: '{{ my_user }}'
     group: '{{ my_user }}'
+
+- name: Create ~/.bashrc
+  template:
+    src: bashrc.j2
+    dest: '{{ my_user_home }}/.bashrc'
+    owner: '{{ my_user }}'
+    group: '{{ my_user }}'
+
+- name: Create ~/.bash_profile
+  template:
+    src: bash_profile.j2
+    dest: '{{ my_user_home }}/.bash_profile'
+    owner: '{{ my_user }}'
+    group: '{{ my_user }}'
+
