@@ -3,5 +3,5 @@
 - include_tasks: users.yml
 - include_tasks: kryptco.yml
 - include_tasks: packages.yml
-- include_tasks: vim8.yml
 - include_tasks: dotfiles.yml
+- include_tasks: vim8.yml
