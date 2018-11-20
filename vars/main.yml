@@ -5,12 +5,10 @@ my_user_home: '/home/{{ my_user }}'
 my_name: Danny Berkowitz
 my_email: dwowitz@gmail.com
 packages:
-  - kr
   - docker
   - python
   - python-pip
   - python-virtualenv
-  - vim-enhanced
   - tmux
   - mlocate
   - nmap

@@ -1,0 +1,40 @@
+---
+# vim8.yml
+
+- name: Install vim-enhanced
+  yum:
+    name: vim-enhanced
+    state: present
+
+- name: Install GH Repo
+  yum:
+    name: http://mirror.ghettoforge.org/distributions/gf/gf-release-latest.gf.el7.noarch.rpm
+    state: present
+    disable_gpg_check: true
+
+- name: Upgrade to vim 8
+  yum:
+    name: '*'
+    state: latest
+    enablerepo: gf,gf-plus
+
+- name: Create vim plugins directory
+  file:
+    path: "{{ my_user_home }}/.vim/autoload"
+    state: directory
+    owner: "{{ my_user }}"
+    group: "{{ my_group }}"
+
+- name: Install vim-plug plugin manager
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ my_user_home }}/.vim/autoload/plug.vim"
+    owner: "{{ my_user }}"
+    group: "{{ my_group }}"
+
+- name: Install vim plugins
+  command: "vim -c PlugInstall -c q -c q"
+  become: yes
+  become_user: "{{ my_user }}"
+  args:
+    creates: "{{ my_user_home }}/.vim/plugged"

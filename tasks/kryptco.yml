@@ -1,0 +1,28 @@
+---
+# kryptco.yml
+
+- name: Download Kryptco gpg key
+  shell: |
+    gpg --keyserver=hkp://keyserver.ubuntu.com:80 --recv-keys "C4A05888A1C4FA02E1566F859F2A29A569653940"
+    gpg --export --armor C4A05888A1C4FA02E1566F859F2A29A569653940 > /tmp/kryptco.key
+  args:
+    creates: /tmp/kryptco.key
+
+- name: Import Kryptco gpg key to rpm database
+  rpm_key:
+    state: present
+    key: /tmp/kryptco.key
+
+- name: Add krypt.co repository
+  yum_repository:
+    name: kryptco
+    description: krypt.co Repository
+    baseurl: https://kryptco.github.io/yum/
+    gpgkey: https://krypt.co/repo/kryptco.pgp
+    enabled: yes
+    gpgcheck: yes
+
+- name: Install kr utility
+  yum:
+    name: kr
+    state: present
