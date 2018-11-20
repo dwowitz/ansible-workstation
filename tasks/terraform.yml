@@ -1,5 +1,15 @@
 ---
 # terraform.yml
 
+- name: Find latest Terraform version
+  shell: >
+    curl -s https://api.github.com/repos/hashicorp/terraform/releases 2> /dev/null
+    | awk '/tag_name/ {print $2}'
+    | grep  -v '-'
+    | grep -m1 -Po '(?<="v).*(?=",)'
+  register: terraform_version
+
 - name: Download the Terraform zip archive
-  get_url: https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
+  get_url:
+    url: "https://releases.hashicorp.com/terraform/{{ terraform_version.stdout }}/terraform_{{ terraform_version.stdout }}_linux_amd64.zip"
+    dest: /tmp/terraform.zip

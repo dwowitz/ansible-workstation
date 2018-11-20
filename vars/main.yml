@@ -19,4 +19,4 @@ packages:
   - '@development'
 install_aws: true
 install_gcp: true
-install_terraform: true
+install_terraform: false
