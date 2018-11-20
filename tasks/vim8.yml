@@ -33,7 +33,7 @@
     group: "{{ my_user }}"
 
 - name: Install vim plugins
-  command: "vim -c PlugInstall -c q -c q"
+  command: "vim +PlugInstall +qall"
   become: yes
   become_user: "{{ my_user }}"
   args:
