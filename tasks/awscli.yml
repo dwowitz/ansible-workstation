@@ -1,0 +1,10 @@
+---
+# awscli.yml
+
+- name: Install awscli to virtualenv
+  pip:
+    name: awscli
+    virtualenv: "{{ my_user_home }}/aws/.venv"
+  become: true
+  become_user: "{{ my_user }}"
+

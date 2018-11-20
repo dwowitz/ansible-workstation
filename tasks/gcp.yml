@@ -1,0 +1,20 @@
+---
+# gcp.yml
+
+- name: Add Google SDK repo
+  yum_repository:
+    name: google-cloud-sdk
+    description: Google Cloud SDK
+    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64
+    enabled: yes
+    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgkey: 
+      - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+- name: Install Google Cloud SDK packages
+  yum:
+    name:
+      - google-cloud-sdk
+      - kubectl

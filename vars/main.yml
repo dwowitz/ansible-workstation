@@ -17,3 +17,5 @@ packages:
   - bc
   - tree
   - '@development'
+install_aws: true
+install_gcp: true
