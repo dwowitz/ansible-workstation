@@ -4,7 +4,8 @@
 - name: Find latest Terraform version
   shell: curl -s https://api.github.com/repos/hashicorp/terraform/releases 2> /dev/null |jq -r '[.[].tag_name | select(contains("-") |not)][0] |sub("v";"")'
   register: terraform_version
-  creates: /usr/local/bin/terraform
+  args:
+    creates: /usr/local/bin/terraform
 
 - name: Download and extract Terraform from its archive
   unarchive:

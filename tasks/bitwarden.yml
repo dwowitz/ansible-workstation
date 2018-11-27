@@ -6,7 +6,8 @@
   args:
     executable: /bin/bash
   register: bitwarden_url
-  creates: /usr/local/bin/bw
+  args:
+    creates: /usr/local/bin/bw
 
 - name: Download and extract the Bitwarden cli from its archive
   unarchive:
