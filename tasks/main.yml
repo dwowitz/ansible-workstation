@@ -10,6 +10,8 @@
 
 - include_tasks: vim8.yml
 
+- include_tasks: bitwarden.yml
+
 - include_tasks: awscli.yml
   when: install_aws == true
 
