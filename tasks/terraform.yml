@@ -2,14 +2,15 @@
 # terraform.yml
 
 - name: Find latest Terraform version
-  shell: >
-    curl -s https://api.github.com/repos/hashicorp/terraform/releases 2> /dev/null
-    | awk '/tag_name/ {print $2}'
-    | grep  -v '-'
-    | grep -m1 -Po '(?<="v).*(?=",)'
+  shell: curl -s https://api.github.com/repos/hashicorp/terraform/releases 2> /dev/null |jq -r '[.[].tag_name | select(contains("-") |not)][0] |sub("v";"")'
   register: terraform_version
 
-- name: Download the Terraform zip archive
-  get_url:
-    url: "https://releases.hashicorp.com/terraform/{{ terraform_version.stdout }}/terraform_{{ terraform_version.stdout }}_linux_amd64.zip"
-    dest: /tmp/terraform.zip
+- name: Download and extract Terraform from its archive
+  unarchive:
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version.stdout }}/terraform_{{ terraform_version.stdout }}_linux_amd64.zip"
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+    owner: root
+    creates: /usr/local/bin/terraform
+
