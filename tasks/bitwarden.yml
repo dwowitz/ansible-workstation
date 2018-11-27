@@ -7,7 +7,7 @@
     executable: /bin/bash
   register: bitwarden_url
 
-- name: Download and extract the Bitwarden from its archive
+- name: Download and extract the Bitwarden cli from its archive
   unarchive:
     src: "{{ bitwarden_url.stdout }}"
     dest: /usr/local/bin
